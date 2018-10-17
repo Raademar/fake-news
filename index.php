@@ -9,6 +9,11 @@ require(__DIR__. '/data/db.php');
 $sqlite = 'SELECT * FROM Articles ORDER BY Dt Desc';
 $result = $db->query($sqlite);
 
+// Query Users database
+$sqliteUsers = 'SELECT * FROM Users';
+$resultUsers = $db->query($sqliteUsers);
+
+
 // Close the connection
 $db = NULL;
 

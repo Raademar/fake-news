@@ -1,0 +1,5 @@
+.like-button:hover {
+  cursor: pointer;
+  transform: scale(1.5);
+  transition: .2s ease;
+}

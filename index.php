@@ -6,12 +6,19 @@ require(__DIR__. '/data/data.php');
 require(__DIR__. '/data/db.php');
 
 //Query the database
-$sqlite = 'SELECT * FROM Articles ORDER BY Dt Desc';
-$result = $db->query($sqlite);
+$sqlite = $db->prepare('SELECT Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name FROM Articles INNER JOIN Users ON Users.id = Articles.user_id ORDER BY Dt Desc');
+if(!$sqlite){
+  die(var_dump($db->errorInfo()));
+}
+$sqlite->execute();
+$res = $sqlite->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 // Query Users database
-$sqliteUsers = 'SELECT * FROM Users';
-$resultUsers = $db->query($sqliteUsers);
+$sqliteUsers = $db->prepare('SELECT * FROM Users');
+$sqliteUsers->execute();
+$resUsers = $sqliteUsers->fetchAll(PDO::FETCH_ASSOC);
 
 
 // Close the connection
@@ -41,10 +48,19 @@ $db = NULL;
     </div>
   </nav>
   <div class="container">
-    <?php foreach($result as $row): ?>
+    <form>
+      <div class="input-field">
+        <input id="search" type="search" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
+  <div class="container">
+    <?php foreach($res as $row): ?>
       <h3><?=$row['Title'];?></h3>
       <p><?=$row['Body'];?></p>
-      <p><?=$row['Author'];?></p>
+      <p><?=$row['Full_name'];?></p>
       <span class="badge"><?=$row['Likes'];?><i class="tiny material-icons like-button">thumb_up</i></span>
       <p><?=$row['Dt'];?></p>
     <?php endforeach; ?>

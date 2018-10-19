@@ -5,7 +5,7 @@ require_once(__DIR__. '/includes/head.php');
 require_once(__DIR__. '/includes/nav.php');
 
 //Query the database
-$sqlite = $db->prepare('SELECT Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name FROM Articles INNER JOIN Users ON Users.id = Articles.user_id ORDER BY Articles.Dt Desc');
+$sqlite = $db->prepare('SELECT Articles.id, Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name FROM Articles INNER JOIN Users ON Users.id = Articles.user_id ORDER BY Articles.Dt Desc');
 if(!$sqlite){
   die(var_dump($db->errorInfo()));
 }
@@ -25,6 +25,7 @@ $db = NULL;
 
 require_once(__DIR__. '/includes/head.php');
 require_once(__DIR__. '/includes/nav.php');
+
 ?>
   <div class="container">
     <form>
@@ -40,8 +41,9 @@ require_once(__DIR__. '/includes/nav.php');
       <h3><?=$row['Title'];?></h3>
       <p><?=$row['Body'];?></p>
       <p><?=$row['Full_name'];?></p>
-      <span class="badge" id="like-btn">34<i class="tiny material-icons like-button">exposure_plus_1</i></span>
+      <span class="badge" id="like-btn">0 Likes<i class="tiny material-icons like-button">exposure_plus_1</i></span>
       <p><?=$row['Dt'];?></p>
+      <a href="edit-post.php?id=<?= $row['id']?>"><i class="tiny material-icons">edit</i> Edit post</a>
     <?php endforeach; ?>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -52,7 +54,7 @@ require_once(__DIR__. '/includes/nav.php');
     likeBtn.addEventListener('click', () => {
       let num = parseInt(likeBtn.textContent)
       num ++
-      likeBtn.innerHTML = num + '<i class="tiny material-icons like-button">exposure_plus_1</i>'
+      likeBtn.innerHTML = num + ' Likes<i class="tiny material-icons like-button">exposure_plus_1</i>'
     })
   </script>
 </body>

@@ -4,25 +4,26 @@
   require_once(__DIR__. '/includes/head.php');
   require_once(__DIR__. '/includes/nav.php');
 
-  submitNewPost(1, 'post-title', 'post-body');
-
+  if(isset($_POST["submit"])){
+    submitNewPost(1, 'posttitle', 'postbody');
+  }
   ?>
   <div class="container">
     <form class="col s8" action="new-post.php" method="POST">
       <div class="row">
         <div class="input-field col s12">
-          <input id="post-title" name="post-title" type="text">
-          <label for="post-title">Title</label>
+          <input id="posttitle" name="posttitle" type="text">
+          <label for="posttitle">Title</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="post-body" name="post-body" class="materialize-textarea"></textarea>
-          <label for="post-body">Body</label>
+          <textarea id="postbody" name="postbody" class="materialize-textarea"></textarea>
+          <label for="postbody">Body</label>
         </div>
       </div>
       <div class="row">
-        <button class="btn waves-effect waves-light green " type="submit" name="action">Submit
+        <button class="btn waves-effect waves-light green " type="submit" name="submit">Submit
           <i class="material-icons right">send</i>
         </button>
       </div>  

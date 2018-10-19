@@ -1,27 +1,66 @@
 <?php
 declare(strict_types=1);
-require_once(__DIR__.'/db.php');
 
-  function submitNewPost(int $user_id = 1, string $post_title, string $post_body){
+function submitNewPost(int $user_id = 1, string $post_title, string $post_body){
+  require(__DIR__.'/db.php');
 
+  try {
     $stmt = $db->prepare("INSERT INTO 
-    Articles (User_id, Title, Body) 
+    Articles (id, User_id, Title, Body) 
     VALUES 
-    (:User_id, :Title, :Body)");
-    
+    (NULL, :User_id, :posttitle, :postbody)");
+
     if(!$stmt){
       die(var_dump($db->errorInfo()));
     }
 
     $stmt->bindParam(':User_id', $user_id);
-    $stmt->bindParam(':Title', $postTitle);
-    $stmt->bindParam(':Body', $postBody);
+    $stmt->bindParam(':posttitle', $postTitle);
+    $stmt->bindParam(':postbody', $postBody);
 
-    $user_id = $_POST[$user_id];
-    $postTitle = $_POST['post-title'];
-    $postBody = $_POST['post-body'];
+    //$user_id = $_POST[$user_id];
+    $postTitle = $_POST['posttitle'];
+    $postBody = nl2br($_POST['postbody']);
+
     $stmt->execute();
-
-    echo "New records created successfully";
-
+    
+  
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+    if(!$e) {
+      echo "Post submitted successfully!";
+    }
   }
+}
+
+function submitEditPost(int $user_id = 1, string $post_title, string $post_body){
+  require(__DIR__.'/db.php');
+
+  try {
+    $stmt = $db->prepare("INSERT INTO 
+    Articles (id, User_id, Title, Body) 
+    VALUES 
+    (NULL, :User_id, :posttitle, :postbody)");
+
+    if(!$stmt){
+      die(var_dump($db->errorInfo()));
+    }
+
+    $stmt->bindParam(':User_id', $user_id);
+    $stmt->bindParam(':posttitle', $postTitle);
+    $stmt->bindParam(':postbody', $postBody);
+
+    //$user_id = $_POST[$user_id];
+    $postTitle = $_POST['posttitle'];
+    $postBody = nl2br($_POST['postbody']);
+
+    $stmt->execute();
+    
+  
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+    if(!$e) {
+      echo "Post submitted successfully!";
+    }
+  }
+}

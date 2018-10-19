@@ -3,3 +3,11 @@
   color: #1e88e5;
   transition: .2s ease;
 }
+
+.badge{
+  font-size:2rem;
+}
+
+.post-form {
+  height: 80vh;
+}

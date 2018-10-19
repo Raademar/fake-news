@@ -1,3 +1,12 @@
+<?php
+declare(strict_types=1);
+
+  require(__DIR__. '/../data/functions.php');
+  require(__DIR__. '/../data/data.php');
+  require(__DIR__. '/../data/db.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

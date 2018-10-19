@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
 
-require(__DIR__. '/data/functions.php');
-require(__DIR__. '/data/data.php');
-require(__DIR__. '/data/db.php');
+require_once(__DIR__. '/includes/head.php');
+require_once(__DIR__. '/includes/nav.php');
 
 //Query the database
 $sqlite = $db->prepare('SELECT Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name FROM Articles INNER JOIN Users ON Users.id = Articles.user_id ORDER BY Articles.Dt Desc');

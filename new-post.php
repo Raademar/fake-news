@@ -1,11 +1,14 @@
 <?php
-
+  declare(strict_types=1);
+  
   require_once(__DIR__. '/includes/head.php');
   require_once(__DIR__. '/includes/nav.php');
 
+  submitNewPost(1, 'post-title', 'post-body');
+
   ?>
   <div class="container">
-    <form class="col s8" action="new-post.php">
+    <form class="col s8" action="new-post.php" method="POST">
       <div class="row">
         <div class="input-field col s12">
           <input id="post-title" name="post-title" type="text">

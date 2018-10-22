@@ -5,10 +5,7 @@ function submitNewPost(int $user_id = 1, string $post_title, string $post_body){
   require(__DIR__.'/db.php');
 
   try {
-    $stmt = $db->prepare("INSERT INTO 
-    Articles (id, User_id, Title, Body) 
-    VALUES 
-    (NULL, :User_id, :posttitle, :postbody)");
+    $stmt = $db->prepare("INSERT INTO Articles (id, User_id, Title, Body) VALUES (NULL, :User_id, :posttitle, :postbody)");
 
     if(!$stmt){
       die(var_dump($db->errorInfo()));
@@ -33,26 +30,22 @@ function submitNewPost(int $user_id = 1, string $post_title, string $post_body){
   }
 }
 
-function submitEditPost(int $user_id = 1, string $post_title, string $post_body){
+function submitEditPost(string $postTitle, string $postBody, int $id){
   require(__DIR__.'/db.php');
 
   try {
-    $stmt = $db->prepare("INSERT INTO 
-    Articles (id, User_id, Title, Body) 
-    VALUES 
-    (NULL, :User_id, :posttitle, :postbody)");
+    $stmt = $db->prepare("UPDATE Articles SET Title = :updatedPostTitle, Body = :updatedPostBody WHERE id = :id;");
 
     if(!$stmt){
       die(var_dump($db->errorInfo()));
     }
 
-    $stmt->bindParam(':User_id', $user_id);
-    $stmt->bindParam(':posttitle', $postTitle);
-    $stmt->bindParam(':postbody', $postBody);
+    $stmt->bindParam(':updatedPostTitle', $postTitle);
+    $stmt->bindParam(':updatedPostBody', $postBody);
+    $stmt->bindParam(':id', $id);
 
-    //$user_id = $_POST[$user_id];
-    $postTitle = $_POST['posttitle'];
-    $postBody = nl2br($_POST['postbody']);
+    $postTitle = $_POST['updatedPostTitle'];
+    $postBody = nl2br($_POST['updatedPostBody']);
 
     $stmt->execute();
     

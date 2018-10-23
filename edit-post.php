@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="row">
-        <button class="btn waves-effect waves-light green " type="submit" name="submit">Submit
+        <button class="btn waves-effect waves-light green" type="submit" name="submit">Update
           <i class="material-icons right">send</i>
         </button>
       </div>  
@@ -58,7 +58,6 @@
       <p><?=$row['Full_name'];?></p>
       <span class="badge" id="like-btn">0 Likes<i class="tiny material-icons like-button">exposure_plus_1</i></span>
       <p><?=$row['Dt'];?></p>
-      <a href="edit-post.php?id=<?= $row['id']?>"><i class="tiny material-icons">edit</i> Edit post</a>
     <?php endforeach; ?>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

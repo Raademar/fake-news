@@ -4,6 +4,9 @@ declare(strict_types=1);
 require_once(__DIR__. '/includes/head.php');
 require_once(__DIR__. '/includes/nav.php');
 
+
+$likeNumber = $_POST['likeNumber'] ?? 0;
+
 //Query the database
 $sqlite = $db->prepare('SELECT Articles.id, Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name FROM Articles INNER JOIN Users ON Users.id = Articles.user_id ORDER BY Articles.Dt Desc');
 if(!$sqlite){
@@ -41,9 +44,10 @@ require_once(__DIR__. '/includes/nav.php');
       <h3><?=$row['Title'];?></h3>
       <p><?=$row['Body'];?></p>
       <p><?=$row['Full_name'];?></p>
-      <span class="badge" id="like-btn">0 Likes<i class="tiny material-icons like-button">exposure_plus_1</i></span>
+      <span class="badge" id="like-btn"><?=$likeNumber;?> Likes<i class="tiny material-icons like-button">exposure_plus_1</i></span>
       <p><?=$row['Dt'];?></p>
       <a href="edit-post.php?id=<?= $row['id']?>"><i class="tiny material-icons">edit</i> Edit post</a>
+      <a href="delete-post.php?id=<?= $row['id']?>" class="red-text"><i class="tiny material-icons">delete</i>Delete post</a>
     <?php endforeach; ?>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -52,9 +56,13 @@ require_once(__DIR__. '/includes/nav.php');
     const likeBtn = document.querySelector('#like-btn')
 
     likeBtn.addEventListener('click', () => {
-      let num = parseInt(likeBtn.textContent)
-      num ++
-      likeBtn.innerHTML = num + ' Likes<i class="tiny material-icons like-button">exposure_plus_1</i>'
+      let likeNumber = parseInt(likeBtn.textContent)
+      likeNumber ++
+      const request = new XMLHttpRequest()
+      request.open('POST', 'index.php', true)
+      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+      request.send(likeNumber)
+      likeBtn.innerHTML = likeNumber + ' Likes<i class="tiny material-icons like-button">exposure_plus_1</i>'
     })
   </script>
 </body>

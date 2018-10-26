@@ -82,3 +82,26 @@ function submitDeletePost(int $id){
     }
   }
 }
+
+// Save likes on post
+function submitPostLikes(int $articleLikes, int $id){
+  require(__DIR__.'/db.php');
+
+  try {
+    $stmt = $db->prepare("UPDATE Articles SET Likes = Likes + :likes WHERE id = :id;");
+
+    if(!$stmt){
+      die(var_dump($db->errorInfo()));
+    }
+  
+    $stmt->bindParam(':likes', $articleLikes);
+    $stmt->bindParam(':id', $id);
+  
+    $articleLikes = $_POST['likes'];
+  
+    $stmt->execute();
+     
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+}

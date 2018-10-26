@@ -44,11 +44,10 @@ require_once(__DIR__. '/includes/nav.php');
       <h3><?=$row['Title'];?></h3>
       <p><?=$row['Body'];?></p>
       <p><?=$row['Full_name'];?></p>
-      <span class="badge like-btn"><?=$row['Likes']?> Likes<i class="tiny material-icons like-button">exposure_plus_1</i></span>
+      <span class="badge like-btn" data-id="<?=$row['id'];?>" ><?=$row['Likes']?> Likes<i class="tiny material-icons like-button">exposure_plus_1</i></span>
       <p><?=$row['Dt'];?></p>
       <a href="edit-post.php?id=<?= $row['id']?>"><i class="tiny material-icons">edit</i> Edit post</a>
       <a href="delete-post.php?id=<?= $row['id']?>" class="red-text"><i class="tiny material-icons">delete</i>Delete post</a>
-      <?php $articleID = $row['id']?>
     <?php endforeach; ?>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -57,8 +56,8 @@ require_once(__DIR__. '/includes/nav.php');
     const likeBtns = [...document.querySelectorAll('.like-btn')]
 
   likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(){
-    let likeButtonID = "<?=$articleID;?>"
-    likeButtonID = parseInt(likeButtonID)
+    let likeButtonID
+    likeButtonID = parseInt(likeButton.dataset.id)
     sendLikes(likeButtonID)
   }))
 
@@ -86,8 +85,6 @@ require_once(__DIR__. '/includes/nav.php');
         likeButton.innerHTML = likeNumber + ' Likes<i class="tiny material-icons like-button">exposure_plus_1</i>'
       })
     }
-
-
   </script>
 </body>
 </html>

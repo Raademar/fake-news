@@ -4,9 +4,6 @@ declare(strict_types=1);
 require_once(__DIR__. '/includes/head.php');
 require_once(__DIR__. '/includes/nav.php');
 
-
-
-
 //Query the database
 $sqlite = $db->prepare('SELECT Articles.id, Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name FROM Articles INNER JOIN Users ON Users.id = Articles.user_id ORDER BY Articles.Dt Desc');
 if(!$sqlite){
@@ -14,8 +11,6 @@ if(!$sqlite){
 }
 $sqlite->execute();
 $res = $sqlite->fetchAll(PDO::FETCH_ASSOC);
-
-
 
 // Query Users database
 $sqliteUsers = $db->prepare('SELECT * FROM Users');
@@ -55,17 +50,36 @@ require_once(__DIR__. '/includes/nav.php');
   <script>
     const likeBtns = [...document.querySelectorAll('.like-btn')]
 
-  likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(){
-    let likeButtonID
-    likeButtonID = parseInt(likeButton.dataset.id)
-    sendLikes(likeButtonID)
-  }))
+    likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(){
+      let likeButtonID
+      likeButtonID = parseInt(likeButton.dataset.id)
+      let thissession = 0
+      let likeNumber
+      thissession++
+      // let likesData = {
+      //   likes: thissession,
+      //   id: likeButtonID
+      // }
+      //postData('like-counter.php', likesData)
+      sendLikes(likeButtonID)
+      thissession = 0
+    }))
 
+    function postData(url = ``, data = {}) {
+      return fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+        },
+        body: JSON.stringify(data)
+      })
+    }
+    
     function sendLikes(likeButtonID) {
       let thissession = 0
       let likeNumber
       thissession++
-    
       const request = new XMLHttpRequest()
       request.open('POST', 'like-counter.php', true)
       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')

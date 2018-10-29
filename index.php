@@ -39,66 +39,14 @@ require_once(__DIR__. '/includes/nav.php');
       <h3><?=$row['Title'];?></h3>
       <p><?=$row['Body'];?></p>
       <p><?=$row['Full_name'];?></p>
-      <span class="badge like-btn" data-id="<?=$row['id'];?>" ><?=$row['Likes']?> Likes<i class="tiny material-icons like-button">exposure_plus_1</i></span>
+      <span class="badge like-btn" data-id="<?=$row['id'];?>"><?=$row['Likes']?> Likes<i class="tiny material-icons like-button pink-text text-darken-1">favorite</i></span>
       <p><?=$row['Dt'];?></p>
       <a href="edit-post.php?id=<?= $row['id']?>"><i class="tiny material-icons">edit</i> Edit post</a>
-      <a href="delete-post.php?id=<?= $row['id']?>" class="red-text"><i class="tiny material-icons">delete</i>Delete post</a>
+      <a href="delete-post.php?id=<?= $row['id']?>" class="red-text"><i class="tiny material-icons">delete</i>Delete post</a> 
     <?php endforeach; ?>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <script>
-    const likeBtns = [...document.querySelectorAll('.like-btn')]
-
-    likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(){
-      let likeButtonID
-      likeButtonID = parseInt(likeButton.dataset.id)
-      let thissession = 0
-      let likeNumber
-      thissession++
-      // let likesData = {
-      //   likes: thissession,
-      //   id: likeButtonID
-      // }
-      //postData('like-counter.php', likesData)
-      sendLikes(likeButtonID)
-      thissession = 0
-    }))
-
-    function postData(url = ``, data = {}) {
-      return fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-        },
-        body: JSON.stringify(data)
-      })
-    }
-    
-    function sendLikes(likeButtonID) {
-      let thissession = 0
-      let likeNumber
-      thissession++
-      const request = new XMLHttpRequest()
-      request.open('POST', 'like-counter.php', true)
-      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-      request.send(`likes=${thissession}&id=${likeButtonID}`)
-      thissession = 0
-    }
-
-    function getLikes() {
-      fetch('like-counter.php', {
-        method: 'get',
-      })
-      .then(function(response) {
-        return response.json()
-      })
-      .then(function(myJson) {
-        likeNumber = JSON.parse(myJson.likes)
-        likeButton.innerHTML = likeNumber + ' Likes<i class="tiny material-icons like-button">exposure_plus_1</i>'
-      })
-    }
-  </script>
+  <script src="assets/main.js"></script>
 </body>
 </html>

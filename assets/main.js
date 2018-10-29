@@ -1,28 +1,26 @@
+// Get the likebuttons and spread them out separate.
 const likeBtns = [...document.querySelectorAll('.like-btn')]
 
+    // For each button add a eventlistener and set the ID equal to the data-id.
     likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(){
       let likeButtonID
       likeButtonID = parseInt(likeButton.dataset.id)
-      // let likesData = {
-      //   likes: thissession,
-      //   id: likeButtonID
-      // }
-      //postData('like-counter.php', likesData)
       sendLikes(likeButtonID)
-      thissession = 0
     }))
 
-    function postData(url = ``, data = {}) {
-      return fetch(url, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-        },
-        body: JSON.stringify(data)
-      })
-    }
+    // **TOOD** Swap to fetch POST instead of ajax.
+    // function postData(url = ``, data = {}) {
+    //   return fetch(url, {
+    //     method: 'POST',
+    //     credentials: 'same-origin',
+    //     headers: {
+    //       'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+    //     },
+    //     body: JSON.stringify(data)
+    //   })
+    // }
     
+    // Ajax post request for sending new likes on a Article.
     function sendLikes(likeButtonID) {
       let thissession = 0
       let likeNumber
@@ -31,9 +29,11 @@ const likeBtns = [...document.querySelectorAll('.like-btn')]
       request.open('POST', 'like-counter.php', true)
       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
       request.send(`likes=${thissession}&id=${likeButtonID}`)
+      likeButton.innerHTML = likeNumber + ' Likes<i class="tiny material-icons like-button">favorite</i>'
       thissession = 0
     }
 
+    // **TODO** If time left, fix this so likes can be fetched after post.
     function getLikes() {
       fetch('like-counter.php', {
         method: 'get',

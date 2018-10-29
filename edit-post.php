@@ -4,7 +4,7 @@
   require_once(__DIR__. '/includes/head.php');
   require_once(__DIR__. '/includes/nav.php');
 
-  // Processing form data when form is submitted
+  // Get the requested post id.
   $id = $_GET['id'] ?? null;
 
   if ( $id == null ) {
@@ -12,6 +12,7 @@
   }
   $int_id = intval($id);
 
+  // Submit the updated post.
   if(isset($_POST["submit"])){
     submitEditPost('updatedPostTitle', 'updatedPostBody', $int_id);
   }

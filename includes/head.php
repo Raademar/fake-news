@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-
+  // Include crucial files and connections.
   require(__DIR__. '/../data/functions.php');
   require(__DIR__. '/../data/data.php');
   require(__DIR__. '/../data/db.php');

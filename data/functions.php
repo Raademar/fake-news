@@ -40,7 +40,7 @@ function submitEditPost(string $postTitle, string $postBody, int $id){
     if(!$stmt){
       die(var_dump($db->errorInfo()));
     }
-
+    // Bind params.
     $stmt->bindParam(':updatedPostTitle', $postTitle);
     $stmt->bindParam(':updatedPostBody', $postBody);
     $stmt->bindParam(':id', $id);
@@ -68,7 +68,8 @@ function submitDeletePost(int $id){
     if(!$stmt){
       die(var_dump($db->errorInfo()));
     }
-    
+
+    // Bind params.
     $stmt->bindParam(':id', $id);
     $id = $_GET['id'];
 
@@ -93,7 +94,7 @@ function submitPostLikes(int $articleLikes, int $id){
     if(!$stmt){
       die(var_dump($db->errorInfo()));
     }
-  
+    // Bind params.
     $stmt->bindParam(':likes', $articleLikes);
     $stmt->bindParam(':id', $id);
   

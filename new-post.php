@@ -4,6 +4,7 @@
   require_once(__DIR__. '/includes/head.php');
   require_once(__DIR__. '/includes/nav.php');
 
+  // Submit a new post.
   if(isset($_POST["submit"])){
     submitNewPost(1, 'posttitle', 'postbody');
   }

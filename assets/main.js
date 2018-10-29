@@ -1,7 +1,7 @@
 // Get the likebuttons and spread them out separate.
 const likeBtns = [...document.querySelectorAll('.like-btn')]
 
-    // For each button add a eventlistener and set the ID equal to the data-id.
+// For each button add a eventlistener and set the ID equal to the data-id.
     likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(){
       let likeButtonID
       likeButtonID = parseInt(likeButton.dataset.id)

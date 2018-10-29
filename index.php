@@ -40,7 +40,7 @@ $db = NULL;
     <h3><?=$row['Title'];?></h3>
     <p><?=$row['Body'];?></p>
     <p><?=$row['Full_name'];?></p>
-    <span class="badge like-btn" data-id="<?=$row['id'];?>"><?=$row['Likes']?> Likes<i class="tiny material-icons like-button pink-text text-darken-1">favorite</i></span>
+    <span class="badge like-btn " data-id="<?=$row['id'];?>"><?=$row['Likes']?> Likes<i class="tiny material-icons like-button pink-text text-darken-1">favorite</i></span>
     <p><?=$row['Dt'];?></p>
     <a href="edit-post.php?id=<?= $row['id']?>"><i class="tiny material-icons">edit</i> Edit post</a>
     <a href="delete-post.php?id=<?= $row['id']?>" class="red-text"><i class="tiny material-icons">delete</i>Delete post</a> 

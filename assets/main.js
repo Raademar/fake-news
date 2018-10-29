@@ -5,6 +5,9 @@ const likeBtns = [...document.querySelectorAll('.like-btn')]
     likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(){
       let likeButtonID
       likeButtonID = parseInt(likeButton.dataset.id)
+      let likeNumber = parseInt(likeButton.textContent)
+      likeNumber++
+      likeButton.innerHTML = likeNumber + ' Likes<i class="tiny material-icons like-button pink-text text-darken-1">favorite</i>'
       sendLikes(likeButtonID)
     }))
 
@@ -23,13 +26,11 @@ const likeBtns = [...document.querySelectorAll('.like-btn')]
     // Ajax post request for sending new likes on a Article.
     function sendLikes(likeButtonID) {
       let thissession = 0
-      let likeNumber
       thissession++
       const request = new XMLHttpRequest()
       request.open('POST', 'like-counter.php', true)
       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
       request.send(`likes=${thissession}&id=${likeButtonID}`)
-      likeButton.innerHTML = likeNumber + ' Likes<i class="tiny material-icons like-button">favorite</i>'
       thissession = 0
     }
 

@@ -17,8 +17,8 @@ function submitNewPost(int $user_id = 1, string $post_title, string $post_body){
     $stmt->bindParam(':postbody', $postBody);
 
     //$user_id = $_POST[$user_id];
-    $postTitle = $_POST['posttitle'];
-    $postBody = nl2br($_POST['postbody']);
+    $postTitle = filter_input(INPUT_POST, 'posttitle', FILTER_SANITIZE_STRING);
+    $postBody = filter_input(INPUT_POST, 'postbody', FILTER_SANITIZE_STRING);
 
     $stmt->execute();
     
@@ -45,8 +45,8 @@ function submitEditPost(string $postTitle, string $postBody, int $id){
     $stmt->bindParam(':updatedPostBody', $postBody);
     $stmt->bindParam(':id', $id);
 
-    $postTitle = trim($_POST['updatedPostTitle']);
-    $postBody = trim(nl2br($_POST['updatedPostBody']));
+    $postTitle = filter_input(INPUT_POST, 'updatedPostTitle', FILTER_SANITIZE_STRING);
+    $postBody = filter_input(INPUT_POST, 'updatedPostBody', FILTER_SANITIZE_STRING);
 
     $stmt->execute();
     

@@ -21,27 +21,27 @@ likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(eve
     
     
     
-// function checkIfLikeButtonClicked(event, likeButtonID, thissession) {
-//   event.preventDefault()
-//   let reverseClick = function(){
-//     clicked = false
-//     console.log(clicked)
-//   }
-//   let isClicked = function(){
-//     return new Promise((resolve, reject) => {
-//       setInterval(reverseClick, 1000)
-//     resolve(clicked)
-//     })
-//   } 
+function checkIfLikeButtonClicked(event, likeButtonID, thissession) {
+  event.preventDefault()
+  let reverseClick = function(){
+    clicked = false
+    console.log(clicked)
+  }
+  let isClicked = function(){
+    return new Promise((resolve, reject) => {
+    setInterval(reverseClick, 1000)
+    resolve(clicked)
+    })
+  } 
 
-//   clearInterval(isClicked)
-//   clicked = true
-//   isClicked().then(clicked => {
-//     if(clicked === false) {
-//       sendLikes(likeButtonID, thissession)
-//     }
-//   })
-// }
+  clearInterval()
+  clicked = true
+  isClicked().then(clicked => {
+    if(clicked === false) {
+      sendLikes(likeButtonID, thissession)
+    }
+  })
+}
 
 // **TOOD** Swap to fetch POST instead of ajax.
 // function postData(url = ``, data = {}) {

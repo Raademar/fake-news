@@ -4,27 +4,23 @@ Fake News articles
 
 ## Getting Started
 
-Clone or Fork
-Init local MAMP, WAMP, LAMP or XAMPP instance.
-Visit localhost:80/index.php
+* Clone or Fork
+* Init local MAMP, WAMP, LAMP or XAMPP instance.
+* SQLite3 needs to be installed for this to work.
+* Visit localhost:80/index.php
 
 ### Installing
 
 Follow previous steps to get it started.
 
-End with an example of getting some data out of the system or using it for a little demo
+You should see some content similar to this.
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+![preview image](https://i.imgur.com/qrpy16M.png)
 
 ## Built With
 
 * [PHP](https://secure.php.net/) - Main language used for the backend.
+* [SQLite3](https://www.sqlite.org/index.html) - Database used.
 * [Materialize](https://materializecss.com) - CSS Framework used
 
 

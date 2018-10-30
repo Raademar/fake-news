@@ -20,7 +20,3 @@ if (isset($_POST['likes'])) {
   // Submit the data to backend.
   submitPostLikes($likes, $int_id);
 }
-
-echo json_encode([
-    'likes' => file_get_contents('likes.txt'),
-]);

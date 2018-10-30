@@ -35,6 +35,7 @@ $db = NULL;
   </form>
 </div>
 <div class="container">
+  
 <!-- Display content from DB. -->
   <?php foreach($res as $row): ?>
     <h3><?=$row['Title'];?></h3>

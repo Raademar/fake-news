@@ -18,7 +18,9 @@
   }
 
   //Query the database
-  $sqlite = $db->prepare("SELECT Articles.id, Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name FROM Articles INNER JOIN Users ON Users.id = Articles.user_id WHERE Articles.id = $int_id ORDER BY Articles.Dt Desc");
+  $sqlite = $db->prepare("SELECT Articles.id, Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name 
+    FROM Articles INNER JOIN Users ON Users.id = Articles.user_id 
+    WHERE Articles.id = $int_id ORDER BY Articles.Dt Desc");
   
   if(!$sqlite){
     die(var_dump($db->errorInfo()));

@@ -7,6 +7,10 @@ Fake News articles
 * Clone or Fork
 * Init local MAMP, WAMP, LAMP or XAMPP instance.
 * SQLite3 needs to be installed for this to work.
+	If you're on Mac or Linux run
+	```
+	sudo apt-get sqlite3
+	```
 * Visit localhost:80/index.php
 
 ### Installing

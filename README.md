@@ -17,8 +17,9 @@ Fake News articles
 	```
 * Visit localhost:80/index.php
 
+#### If everything is working you should see something like the picture below
 
-![preview image](https://i.imgur.com/qrpy16M.png)
+![preview image](https://i.imgur.com/5cYjB64.png)
 
 ## Built With
 

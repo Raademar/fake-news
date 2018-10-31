@@ -1,6 +1,6 @@
-# Project Title
+# Fake News
 
-Fake News articles
+Freaky Friday News aka FFN - Your most reliable source of news on the internet.
 
 ## Getting Started
 

@@ -36,6 +36,7 @@ Fake News articles
 ## This site has been tested by.
 
 * [Erik Arvidsson](https://github.com/erikarvidsson)
+* [Mikael Ravantti](https://github.com/MRavantti)
 * [Per Baltzar](https://github.com/perbaltzar)
 * [André Broman](https://github.com/laykith)
 * [Benjamin Fransson](https://github.com/erhuz)

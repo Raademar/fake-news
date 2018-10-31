@@ -20,7 +20,8 @@ You should see some content similar to this.
 ## Built With
 
 * [PHP](https://secure.php.net/) - Main language used for the backend.
-* [SQLite3](https://www.sqlite.org/index.html) - Database used.
+* [JavaScript](https:javascript.com) - Gotta love that vanilla.
+* [SQLite3](https://www.sqlite.org/index.html) - The database used.
 * [Materialize](https://materializecss.com) - CSS Framework used
 
 
@@ -30,7 +31,7 @@ You should see some content similar to this.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 

@@ -13,11 +13,6 @@ if(!$sqlite){
 $sqlite->execute();
 $res = $sqlite->fetchAll(PDO::FETCH_ASSOC);
 
-// Query Users database
-$sqliteUsers = $db->prepare('SELECT * FROM Users');
-$sqliteUsers->execute();
-$resUsers = $sqliteUsers->fetchAll(PDO::FETCH_ASSOC);
-
 
 // Close the connection
 $db = NULL;
@@ -47,6 +42,11 @@ $db = NULL;
     <a href="delete-post.php?id=<?= $row['id']?>" class="red-text"><i class="tiny material-icons">delete</i>Delete post</a> 
   </div>
   <?php endforeach; ?>
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large green darken-2" href="new-post.php">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

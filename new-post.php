@@ -4,9 +4,14 @@
   require_once(__DIR__. '/includes/head.php');
   require_once(__DIR__. '/includes/nav.php');
 
+  // Query Users database
+  $sqliteUsers = $db->prepare('SELECT * FROM Users');
+  $sqliteUsers->execute();
+  $resUsers = $sqliteUsers->fetchAll(PDO::FETCH_ASSOC);
+
   // Submit a new post.
   if(isset($_POST["submit"])){
-    submitNewPost(1, 'posttitle', 'postbody');
+    submitNewPost(intval('author'), 'posttitle', 'postbody');
   }
   ?>
   <div class="container">
@@ -22,6 +27,15 @@
           <textarea id="postbody" name="postbody" class="materialize-textarea"></textarea>
           <label for="postbody">Body</label>
         </div>
+      </div>
+      <div class="row">
+          <label>Authorized authors</label>
+          <select class="browser-default" name="author">
+            <option value="" disabled selected>Please select author</option>
+            <?php foreach($resUsers as $user): ?>
+              <option value="<?= $user['id']?>"><?= $user['Full_name']?></option>
+            <?php endforeach; ?>
+          </select>
       </div>
       <div class="row">
         <button class="btn waves-effect waves-light green " type="submit" name="submit">Submit

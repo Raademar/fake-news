@@ -2,21 +2,21 @@
 declare(strict_types=1);
 
 // Submit a new post to the database.
-function submitNewPost(int $user_id = 1, string $post_title, string $post_body){
+function submitNewPost(int $user_id, string $post_title, string $post_body){
   require(__DIR__.'/db.php');
 
   try {
-    $stmt = $db->prepare("INSERT INTO Articles (id, User_id, Title, Body) VALUES (NULL, :User_id, :posttitle, :postbody)");
+    $stmt = $db->prepare("INSERT INTO Articles (id, User_id, Title, Body) VALUES (NULL, :author, :posttitle, :postbody)");
 
     if(!$stmt){
       die(var_dump($db->errorInfo()));
     }
 
-    $stmt->bindParam(':User_id', $user_id);
+    $stmt->bindParam(':author', $author_id);
     $stmt->bindParam(':posttitle', $postTitle);
     $stmt->bindParam(':postbody', $postBody);
 
-    //$user_id = $_POST[$user_id];
+    $author_id = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_NUMBER_INT);
     $postTitle = filter_input(INPUT_POST, 'posttitle', FILTER_SANITIZE_STRING);
     $postBody = filter_input(INPUT_POST, 'postbody', FILTER_SANITIZE_STRING);
 

@@ -19,7 +19,7 @@ likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(eve
 		}
   postData(`like-counter.php`, data)
   .then(data => console.log(data)) // JSON-string from `response.json()` call
-	.catch(error => console.error(error));
+	.catch(error => console.error(error))
 	
   thissession = 0
 }))
@@ -44,12 +44,12 @@ function postData(url = ``, data = {}) {
         referrer: "client", // no-referrer, *client
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
-    .then(response => response); // parses response to JSON
+    .then(response => response) // parses response to JSON
 }
 
-let input = document.getElementById("search");
-let filter = input.value.toLowerCase();
-let nodes = document.querySelectorAll('.post');
+let input = document.getElementById("search")
+let filter = input.value.toLowerCase()
+let nodes = document.querySelectorAll('.post')
 
 function filterPosts(nodes, filter) {
 
@@ -62,6 +62,5 @@ function filterPosts(nodes, filter) {
 	}
 }
 input.addEventListener('input', (event) => {
-
 	filterPosts(nodes, event.target.value)
 })

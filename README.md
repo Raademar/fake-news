@@ -4,6 +4,8 @@ Fake News articles
 
 ## Getting Started
 
+### Installing
+
 * Clone or Fork
 
 * Init local MAMP, WAMP, LAMP or XAMPP instance.
@@ -15,13 +17,9 @@ Fake News articles
 	```
 * Visit localhost:80/index.php
 
-### Installing
+#### If everything is working you should see something like the picture below
 
-Follow previous steps to get it started.
-
-You should see some content similar to this.
-
-![preview image](https://i.imgur.com/qrpy16M.png)
+![preview image](https://i.imgur.com/5cYjB64.png)
 
 ## Built With
 
@@ -38,6 +36,7 @@ You should see some content similar to this.
 ## This site has been tested by.
 
 * [Erik Arvidsson](https://github.com/erikarvidsson)
+* [Mikael Ravantti](https://github.com/MRavantti)
 * [Per Baltzar](https://github.com/perbaltzar)
 * [André Broman](https://github.com/laykith)
 * [Benjamin Fransson](https://github.com/erhuz)

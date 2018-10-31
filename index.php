@@ -22,7 +22,7 @@ $db = NULL;
 <!-- Setup our HTML -->
 <div class="container">
   <form>
-    <div class="input-field">
+    <div class="input-field no-focus">
       <input id="search" type="search" placeholder="Search..">
       <i class="material-icons">close</i>
     </div>
@@ -36,15 +36,15 @@ $db = NULL;
     <h3 class="title target"><?=$row['Title'];?></h3>
     <p class="body target"><?=$row['Body'];?></p>
     <p class="full-name"><?=$row['Full_name'];?></p>
-    <span class="badge like-btn " data-id="<?=$row['id'];?>"><?=$row['Likes']?> Likes<i class="tiny material-icons like-button pink-text text-darken-1">favorite</i></span>
+    <span class="badge like-btn nav-text" data-id="<?=$row['id'];?>"><?=$row['Likes']?> Likes<i class="tiny material-icons like-button pink-text text-darken-2">favorite</i></span>
     <p class="date"><?=$row['Dt'];?></p>
-    <a href="edit-post.php?id=<?= $row['id']?>"><i class="tiny material-icons">edit</i> Edit post</a>
-    <a href="delete-post.php?id=<?= $row['id']?>" class="red-text"><i class="tiny material-icons">delete</i>Delete post</a> 
+    <a href="edit-post.php?id=<?= $row['id']?>" class="blue-text text-darken-3"><i class="tiny material-icons ">edit</i> Edit post</a>
+    <a href="delete-post.php?id=<?= $row['id']?>" class="red-text text-darken-3"><i class="tiny material-icons">delete</i>Delete post</a> 
   </div>
   <?php endforeach; ?>
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large green darken-2" href="new-post.php">
-      <i class="large material-icons">mode_edit</i>
+    <a class="btn-floating btn-large green darken-3" href="new-post.php">
+      <i class="large material-icons">add</i>
     </a>
   </div>
 </div>

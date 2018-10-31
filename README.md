@@ -5,11 +5,13 @@ Fake News articles
 ## Getting Started
 
 * Clone or Fork
+
 * Init local MAMP, WAMP, LAMP or XAMPP instance.
+
 * SQLite3 needs to be installed for this to work.
 	If you're on Mac or Linux run
 	```
-	sudo apt-get sqlite3
+	sudo apt-get install sqlite3
 	```
 * Visit localhost:80/index.php
 
@@ -31,7 +33,14 @@ You should see some content similar to this.
 
 ## Authors
 
-* **Mattias Rådemar** - *Initial work* - [Raademar](https://github.com/Raademar)
+* **Mattias Rådemar** - [Raademar](https://github.com/Raademar)
+
+## This site has been tested by.
+
+* [Erik Arvidsson](https://github.com/erikarvidsson)
+* [Per Baltzar](https://github.com/perbaltzar)
+* [André Broman](https://github.com/laykith)
+* [Benjamin Fransson](https://github.com/erhuz)
 
 ## License
 
@@ -39,4 +48,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+* Hat tip to all the open source heroes out there.

@@ -19,8 +19,10 @@
 
   //Query the database
   $sqlite = $db->prepare("SELECT Articles.id, Articles.Title, Articles.Body, Articles.Likes, Articles.Dt, Users.Full_name 
-    FROM Articles INNER JOIN Users ON Users.id = Articles.user_id 
-    WHERE Articles.id = $int_id ORDER BY Articles.Dt Desc");
+    FROM Articles INNER JOIN Users 
+    ON Users.id = Articles.user_id 
+    WHERE Articles.id = $int_id 
+    ORDER BY Articles.Dt Desc");
   
   if(!$sqlite){
     die(var_dump($db->errorInfo()));
@@ -59,7 +61,7 @@
       <h3><?=$row['Title'];?></h3>
       <p><?=$row['Body'];?></p>
       <p><?=$row['Full_name'];?></p>
-      <span class="badge" id="like-btn">0 Likes<i class="tiny material-icons like-button">exposure_plus_1</i></span>
+      <span class="badge like-btn " data-id="<?=$row['id'];?>"><?=$row['Likes']?> Likes<i class="tiny material-icons like-button pink-text text-darken-1">favorite</i></span>
       <p><?=$row['Dt'];?></p>
     <?php endforeach; ?>
   </div>

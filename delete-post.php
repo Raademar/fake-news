@@ -22,10 +22,10 @@
       <div class="row">
       <div class="row">
         <h3>Are you sure you want to delete this post?</h3>
-        <button class="btn waves-effect waves-light red" type="submit" name="submit">Delete
+        <button class="btn waves-effect waves-light red darken-3" type="submit" name="submit">Delete
           <i class="material-icons right">delete</i>
         </button>
-        <a href="index.php" class="btn waves-effect waves-light grey ">Cancel
+        <a href="index.php" class="btn waves-effect waves-light grey darken-2">Cancel
           <i class="material-icons right">cancel</i>
         </a>
       </div>  

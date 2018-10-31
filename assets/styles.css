@@ -1,11 +1,15 @@
-.like-button:hover {
-  cursor: pointer;
-  color: #1e88e5;
-  transition: .2s ease;
+body {
+  background-color: #333;
+  color: oldlace;
 }
 
-.badge{
-  font-size:2rem;
+.like-button {
+  transition: .2s ease-out !important;
+}
+
+.like-button:hover {
+  cursor: pointer !important;
+  transform: scale(1.4) !important;
 }
 
 .post-form {
@@ -17,6 +21,44 @@
   margin-right: 25px;
 }
 
+.nav-text {
+  color: oldlace !important;
+}
+
 .hide {
   display: none;
+}
+
+.input-field input[type=search], input[type=text] {
+  color: oldlace;
+}
+
+.input-field input[type=search]:focus:not(.browser-default) {
+  background-color: #333 !important;
+  color: oldlace;
+  border-bottom: 1px solid oldlace;
+}
+
+
+ .input-field label {
+  color: oldlace;
+}
+.input-field input[type=text]:focus + label, .input-field textarea {
+  color: oldlace;
+}
+
+/* label focus color */
+.input-field input:focus + label, .input-field textarea:focus + label {
+  color: #42a5f5  !important;
+}
+/* label underline focus color */
+.row .input-field input:focus, .input-field textarea:focus {
+  border-bottom: 1px solid #42a5f5 !important;
+  box-shadow: 0 1px 0 0 #42a5f5 !important
+}
+
+select {
+  background-color: #333 !important;
+  color: oldlace;
+  border:1px solid oldlace;
 }

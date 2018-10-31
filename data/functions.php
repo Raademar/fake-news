@@ -2,21 +2,22 @@
 declare(strict_types=1);
 
 // Submit a new post to the database.
-function submitNewPost(int $user_id, string $post_title, string $post_body){
+function submitNewPost(int $userId, string $postTitle, string $postBody){
   require(__DIR__.'/db.php');
 
   try {
-    $stmt = $db->prepare("INSERT INTO Articles (id, User_id, Title, Body) VALUES (NULL, :author, :posttitle, :postbody)");
+    $stmt = $db->prepare("INSERT INTO Articles (id, User_id, Title, Body) 
+      VALUES (NULL, :author, :posttitle, :postbody)");
 
     if(!$stmt){
       die(var_dump($db->errorInfo()));
     }
 
-    $stmt->bindParam(':author', $author_id);
+    $stmt->bindParam(':author', $authorId);
     $stmt->bindParam(':posttitle', $postTitle);
     $stmt->bindParam(':postbody', $postBody);
 
-    $author_id = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_NUMBER_INT);
+    $authorId = filter_input(INPUT_POST, 'author', FILTER_SANITIZE_NUMBER_INT);
     $postTitle = filter_input(INPUT_POST, 'posttitle', FILTER_SANITIZE_STRING);
     $postBody = filter_input(INPUT_POST, 'postbody', FILTER_SANITIZE_STRING);
 
@@ -35,7 +36,9 @@ function submitEditPost(string $postTitle, string $postBody, int $id){
   require(__DIR__.'/db.php');
 
   try {
-    $stmt = $db->prepare("UPDATE Articles SET Title = :updatedPostTitle, Body = :updatedPostBody WHERE id = :id;");
+    $stmt = $db->prepare("UPDATE Articles 
+      SET Title = :updatedPostTitle, Body = :updatedPostBody 
+      WHERE id = :id;");
 
     if(!$stmt){
       die(var_dump($db->errorInfo()));
@@ -63,7 +66,8 @@ function submitDeletePost(int $id){
   require(__DIR__.'/db.php');
 
   try {
-    $stmt = $db->prepare("DELETE FROM Articles WHERE id = :id;");
+    $stmt = $db->prepare("DELETE FROM Articles 
+      WHERE id = :id;");
 
     if(!$stmt){
       die(var_dump($db->errorInfo()));
@@ -89,7 +93,9 @@ function submitPostLikes(int $articleLikes, int $id){
   require(__DIR__.'/db.php');
 
   try {
-    $stmt = $db->prepare("UPDATE Articles SET Likes = Likes + :likes WHERE id = :id;");
+    $stmt = $db->prepare("UPDATE Articles 
+      SET Likes = Likes + :likes 
+      WHERE id = :id;");
 
     if(!$stmt){
       die(var_dump($db->errorInfo()));

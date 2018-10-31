@@ -21,6 +21,11 @@ body {
   margin-right: 25px;
 }
 
+.navlogo-margin {
+  margin-left: 25px;
+  margin-right: 25px
+}
+
 .nav-text {
   color: oldlace !important;
 }
@@ -39,10 +44,10 @@ body {
   border-bottom: 1px solid oldlace;
 }
 
-
- .input-field label {
+.input-field label {
   color: oldlace;
 }
+
 .input-field input[type=text]:focus + label, .input-field textarea {
   color: oldlace;
 }
@@ -61,4 +66,12 @@ select {
   background-color: #333 !important;
   color: oldlace;
   border:1px solid oldlace;
+}
+
+
+@media (max-width: 600px) {
+  .navlogo-margin {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

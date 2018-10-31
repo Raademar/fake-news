@@ -39,7 +39,7 @@ body {
 }
 
 .input-field input[type=search]:focus:not(.browser-default) {
-  background-color: #333 !important;
+  background-color: #313131 !important;
   color: oldlace;
   border-bottom: 1px solid oldlace;
 }
@@ -63,7 +63,7 @@ body {
 }
 
 select {
-  background-color: #333 !important;
+  background-color: #313131 !important;
   color: oldlace;
   border:1px solid oldlace;
 }

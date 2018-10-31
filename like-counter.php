@@ -7,10 +7,10 @@ require_once(__DIR__. '/includes/head.php');
 
 $request = json_decode(file_get_contents('php://input'));
 
-if(isset($request->id) && isset($request->thissession)) {
+if(isset($request->id) && isset($request->thisSession)) {
   // Update likes
 
-  $likes = intval($request->thissession);
+  $likes = intval($request->thisSession);
   $int_id = intval($request->id);
 }
 

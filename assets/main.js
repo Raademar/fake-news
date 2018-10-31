@@ -24,15 +24,6 @@ likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(eve
   thisSession = 0
 }))
 
-// Ajax post request for sending new likes on a Article.
-function sendLikes(likeButtonID, thisSession) {
-  const request = new XMLHttpRequest()
-  request.open('POST', 'like-counter.php', true)
-  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-  request.send(`likes=${thisSession}&id=${likeButtonID}`)
-}
-
-
 function postData(url = ``, data = {}) {
   // Default options are marked with *
     return fetch(url, {

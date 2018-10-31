@@ -28,25 +28,27 @@ $db = NULL;
 <div class="container">
   <form>
     <div class="input-field">
-      <input id="search" type="search" required>
-      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+      <input id="search" type="search" placeholder="Search..">
       <i class="material-icons">close</i>
     </div>
   </form>
 </div>
+
 <div class="container">
-  
 <!-- Display content from DB. -->
   <?php foreach($res as $row): ?>
-    <h3><?=$row['Title'];?></h3>
-    <p><?=$row['Body'];?></p>
-    <p><?=$row['Full_name'];?></p>
+  <div class="post">
+    <h3 class="title target"><?=$row['Title'];?></h3>
+    <p class="body target"><?=$row['Body'];?></p>
+    <p class="full-name"><?=$row['Full_name'];?></p>
     <span class="badge like-btn " data-id="<?=$row['id'];?>"><?=$row['Likes']?> Likes<i class="tiny material-icons like-button pink-text text-darken-1">favorite</i></span>
-    <p><?=$row['Dt'];?></p>
+    <p class="date"><?=$row['Dt'];?></p>
     <a href="edit-post.php?id=<?= $row['id']?>"><i class="tiny material-icons">edit</i> Edit post</a>
     <a href="delete-post.php?id=<?= $row['id']?>" class="red-text"><i class="tiny material-icons">delete</i>Delete post</a> 
+  </div>
   <?php endforeach; ?>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="assets/main.js"></script>
 </body>

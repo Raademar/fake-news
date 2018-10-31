@@ -98,8 +98,6 @@ function submitPostLikes(int $articleLikes, int $id){
     $stmt->bindParam(':likes', $articleLikes);
     $stmt->bindParam(':id', $id);
   
-    $articleLikes = $_POST['likes'];
-  
     $stmt->execute();
      
   } catch (PDOException $e) {

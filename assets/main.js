@@ -6,9 +6,10 @@ let thisSession = 0
 
 // For each button add a eventlistener and set the ID equal to the data-id.
 likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(event){
-	let likeButtonID
+  // Get each unique button
+	let likeButtonID = parseInt(likeButton.dataset.id)
+  // Get the current like number so we can feedback the user instantly without having to query the db.
   let likeNumber = parseInt(likeButton.textContent)
-  likeButtonID = parseInt(likeButton.dataset.id)
   thisSession++
   likeNumber++
 	likeButton.innerHTML = likeNumber + ' Likes<i class="tiny material-icons like-button pink-text text-darken-1">favorite</i>'
@@ -16,27 +17,31 @@ likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(eve
 	let data = {
 		thisSession : thisSession,
 		 id : likeButtonID
-		}
+    }
+    
   postData(`like-counter.php`, data)
-  .then(data => console.log(data)) // JSON-string from `response.json()` call
+  .then(data => console.log(data))
 	.catch(error => console.error(error))
 	
   thisSession = 0
 }))
 
+// Post the likes to the server
 function postData(url = ``, data = {}) {
-  // Default options are marked with *
-    return fetch(url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json; charset=utf-8",
-        },
-        referrer: "client", // no-referrer, *client
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-    })
-    .then(response => response) // parses response to JSON
+  return fetch(url, {
+    method: "POST", 
+    credentials: "same-origin", 
+    headers: {
+        "Content-Type": "application/json; charset=utf-8",
+    },
+    referrer: "client", 
+    body: JSON.stringify(data), 
+  })
+  .then(response => response) 
 }
+
+
+// Live search in posts.
 
 let input = document.getElementById("search")
 let filter = input.value.toLowerCase()
@@ -44,6 +49,7 @@ let nodes = document.querySelectorAll('.post')
 
 function filterPosts(nodes, filter) {
 
+  // If the filter matches remove the class hide if it doesn't matches add the hide class.
   for (i = 0; i < nodes.length; i++) {
 		if (nodes[i].textContent.toLowerCase().includes(filter.toLowerCase())) {
 			nodes[i].classList.remove('hide')
@@ -52,6 +58,8 @@ function filterPosts(nodes, filter) {
     }
 	}
 }
+
+// Listen for user input.
 input.addEventListener('input', (event) => {
 	filterPosts(nodes, event.target.value)
 })

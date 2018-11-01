@@ -20,7 +20,6 @@ likeBtns.forEach(likeButton => likeButton.addEventListener('click', function(eve
     }
     
   postData(`like-counter.php`, data)
-  .then(data => console.log(data))
 	.catch(error => console.error(error))
 	
   thisSession = 0
